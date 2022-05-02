@@ -27,6 +27,7 @@ const expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
  */
 function bubbleSort(nums) {
     // LOOP TO START THE SORTING FROM BEGINNING : OUTER LOOP
+    // count to show how many times it's looped
     let count = 0;
     for (let i = 0; i < nums.length; i++) {
         let swap = false;
@@ -34,10 +35,6 @@ function bubbleSort(nums) {
         // OPTIMIZE: HAVE THE INNER FOR LOOP STOP 1 VALUE LESS ON EVERY ITERATION
         for (let xMen = 0; xMen < nums.length-i-1; xMen++) {
             // COMPARE THE ADJACENT VALUES
-            if (nums[xMen] < nums[xMen+1]) {
-                // IF THE RIGHT VALUE IS BIGGER NO SWAP
-                continue;
-            }
             if (nums[xMen] > nums[xMen+1]) {
                 // IF THE LEFT VALUE IS BIGGER, THEN SWAP THE VALUES
                 var temp = nums[xMen];
@@ -49,9 +46,8 @@ function bubbleSort(nums) {
         }
         count++;
         console.log(`count #: ${count}`)
-        if (!(swap)) {
-            break;
-        }
+        // IF NOT SWAP
+        if (!(swap)) return nums;
     }
     return nums;
 }
